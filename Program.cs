@@ -1,6 +1,6 @@
 public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         Console.WriteLine("Hello, world!");
 
@@ -9,10 +9,11 @@ public class Program
         string name = Console.ReadLine();
         Console.WriteLine("Hello, " + name + "!");
 
-        // Perform other console operations
-        // ...
+        int m = Console.Read();
+        int n = Console.Read();
 
-        // Wait for user input before exiting
+        var board = new BoardBuilder(m, n);
+
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
     }
