@@ -10,6 +10,6 @@ namespace MemoryGame
 
         public Board Build();
 
-        public T PickRandomElement<T>(List<T> list, List<int> times);
+        public T PickRandomImage<T>(List<T> list, List<int> times);
     }
 }
