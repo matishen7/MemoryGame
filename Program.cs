@@ -2,7 +2,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var board = new ConsoleBoardBuilder(10, 10)
+        var board = new ConsoleBoardBuilder(3, 4)
             .Build();
 
         board.Display();

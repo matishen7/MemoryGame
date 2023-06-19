@@ -8,6 +8,11 @@
         {
             this.m = m;
             this.n = n;
+            CellsBuild();
+        }
+
+        private void CellsBuild()
+        {
             cells = new Cell[m][];
             for (int i = 0; i < m; i++)
             {
