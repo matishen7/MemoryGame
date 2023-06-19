@@ -7,5 +7,7 @@ namespace MemoryGame
         private void GetImages()
         {
         }
+
+        public Board Build();
     }
 }
