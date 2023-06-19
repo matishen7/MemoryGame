@@ -53,10 +53,14 @@ internal class ConsoleBoardBuilder : IBoardBuilder
             throw new ArgumentException("The list must not be null or empty.");
         }
 
-        int randomIndex = new Random().Next(list.Count);
+        int randomIndex = new Random().Next(0, list.Count - 1);
         var element = list[randomIndex];
         times[randomIndex]++;
-        if (times[randomIndex] == 2) list.RemoveAt(randomIndex);
+        if (times[randomIndex] == 2)
+        {
+            list.RemoveAt(randomIndex);
+            times.RemoveAt(randomIndex);
+        };
         return element;
     }
 }
