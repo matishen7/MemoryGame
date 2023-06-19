@@ -27,9 +27,20 @@
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
-                    Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
+                    Console.Write(string.Format("* \t"));
                 Console.WriteLine();
             }    
+        }
+
+        public void Display(int x , int y)
+        {
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                    if (i == x && j == y) Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
+                    else Console.Write(string.Format("* \t"));
+                Console.WriteLine();
+            }
         }
 
     }
