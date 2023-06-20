@@ -43,11 +43,20 @@
             }
         }
 
+        public bool AllCardsFound()
+        {
+            for (int i = 0; i < m; i++)
+                for (int j = 0; j < n; j++)
+                    if (cells[i][j].IsFound() == false) return false;
+            return true;
+        }
+
     }
 
     public class Cell
     {
         private string Image { get; set; }
+        private bool Found { get; set; } = false;
         public Cell()
         {
         }
@@ -60,6 +69,16 @@
         public void SetImage(string image)
         {
             Image = image;
+        }
+
+        public bool IsFound()
+        {
+            return this.Found;
+        }
+
+        public void SetAsFound()
+        {
+            Found = true;
         }
     }
 }

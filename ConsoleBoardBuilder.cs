@@ -35,7 +35,7 @@ internal class ConsoleBoardBuilder : IBoardBuilder
         }
     }
 
-    public ConsoleBoardBuilder WithDimenstions(int m, int n)
+    public ConsoleBoardBuilder WithDimensions(int m, int n)
     {
         this.m = m;
         this.n = n;
