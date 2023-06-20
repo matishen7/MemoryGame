@@ -65,6 +65,17 @@
             return true;
         }
 
+        private bool CheckIfCardsMatch(int x, int y, int a, int b)
+        {
+            if (cells[x][y].GetImage().Equals(cells[a][b].GetImage()))
+            {
+                cells[x][y].SetAsFound();
+                cells[a][b].SetAsFound();
+                return true;
+            }
+            return false;
+        }
+
     }
 
     public class Cell
