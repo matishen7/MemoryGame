@@ -27,18 +27,30 @@
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
-                    Console.Write(string.Format("* \t"));
+                    if (cells[i][j].IsFound()) Console.Write("* \t");
+                    else Console.Write(string.Format("? \t"));
                 Console.WriteLine();
-            }    
+            }
         }
 
-        public void Display(int x , int y)
+        public void RevealAllCards()
         {
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
-                    if (i == x && j == y) Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
-                    else Console.Write(string.Format("* \t"));
+                    Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
+                Console.WriteLine();
+            }
+        }
+
+        public void Display(int x, int y)
+        {
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                    if (cells[i][j].IsFound()) Console.Write("* \t");
+                    else if (i == x && j == y) Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
+                    else Console.Write(string.Format("? \t"));
                 Console.WriteLine();
             }
         }
@@ -49,12 +61,15 @@
             {
                 for (int j = 0; j < n; j++)
                 {
-                    if (i == x && j == y) Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
+                    if (cells[i][j].IsFound()) Console.Write("* \t");
+                    else if (i == x && j == y) Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
                     else if (i == a && j == b) Console.Write(string.Format("{0}\t", cells[i][j].GetImage()));
-                    else Console.Write(string.Format("* \t"));
+                    else Console.Write(string.Format("? \t"));
                 }
                 Console.WriteLine();
             }
+
+            CheckIfCardsMatch(x, y, a, b);
         }
 
         public bool AllCardsFound()
@@ -76,34 +91,5 @@
             return false;
         }
 
-    }
-
-    public class Cell
-    {
-        private string Image { get; set; }
-        private bool Found { get; set; } = false;
-        public Cell()
-        {
-        }
-
-        public string GetImage()
-        {
-            return this.Image;
-        }
-
-        public void SetImage(string image)
-        {
-            Image = image;
-        }
-
-        public bool IsFound()
-        {
-            return this.Found;
-        }
-
-        public void SetAsFound()
-        {
-            Found = true;
-        }
     }
 }
