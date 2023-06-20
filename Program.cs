@@ -19,7 +19,7 @@ public class Program
             var board = new ConsoleBoardBuilder()
                 .WithDimensions(m, n)
                 .Build();
-
+            //board.RevealAllCards();
             while (!board.AllCardsFound())
             {
                 board.Display();
