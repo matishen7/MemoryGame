@@ -9,7 +9,8 @@ public class Program
         Console.WriteLine("Enter N(height):");
         string input2 = Console.ReadLine();
         int n = int.Parse(input2);
-        var board = new ConsoleBoardBuilder(m, n)
+        var board = new ConsoleBoardBuilder()
+            .WithDimenstions(m,n)
             .Build();
 
         while (true)

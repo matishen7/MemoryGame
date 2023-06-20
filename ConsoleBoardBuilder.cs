@@ -9,12 +9,8 @@ internal class ConsoleBoardBuilder : IBoardBuilder
     private List<int> imageAssignedCount = new List<int>() { };
     protected Board consoleBoard;
 
-    public ConsoleBoardBuilder(int m, int n)
+    public ConsoleBoardBuilder()
     {
-        this.m = m;
-        this.n = n;
-        GetImages();
-        consoleBoard = new Board(m, n);
     }
 
     private void GetImages()
@@ -27,7 +23,7 @@ internal class ConsoleBoardBuilder : IBoardBuilder
         }
     }
 
-    private void GetBoard()
+    private void SetImages()
     {
         for (int i = 0; i < m; i++)
         {
@@ -39,10 +35,18 @@ internal class ConsoleBoardBuilder : IBoardBuilder
         }
     }
 
+    public ConsoleBoardBuilder WithDimenstions(int m, int n)
+    {
+        this.m = m;
+        this.n = n;
+        GetImages();
+        consoleBoard = new Board(m, n);
+        return this;
+    }
 
     public Board Build()
     {
-        GetBoard();
+        SetImages();
         return consoleBoard;
     }
 
