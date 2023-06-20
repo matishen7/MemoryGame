@@ -1,3 +1,5 @@
+using MemoryGame;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -13,33 +15,46 @@ public class Program
             .WithDimensions(m,n)
             .Build();
 
-        while (true)
+        while (!board.AllCardsFound())
         {
             board.Display();
-            Console.WriteLine("Enter x to reveal 1st the card:");
-            input1 = Console.ReadLine();
-            int x = int.Parse(input1);
-
-            Console.WriteLine("Enter y to reveal 1st the card:");
-            input2 = Console.ReadLine();
-            int y = int.Parse(input2);
-
-            board.Display(x, y);
-
-            Console.WriteLine("Enter x to reveal 2nd the card:");
-            input1 = Console.ReadLine();
-            int a = int.Parse(input1);
-
-            Console.WriteLine("Enter y to reveal 2nd the card:");
-            input2 = Console.ReadLine();
-            int b = int.Parse(input2);
-
-            board.Display(a, b);
+            var firstCard = GetCardCoordinates(m, n);
+            board.Display(firstCard.x, firstCard.y);
+            var secondCard = GetCardCoordinates(m, n);
+            Console.Clear();
+            board.Display(firstCard.x, firstCard.y, secondCard.x, secondCard.y);
+            Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
             Console.Clear();
         }
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
+    }
+
+    private static (int x, int y) GetCardCoordinates(int m , int n)
+    {
+        Console.WriteLine("Enter x to reveal the card:");
+        var input1 = Console.ReadLine();
+        int x = int.Parse(input1);
+        while (x >= m)
+        {
+            Console.WriteLine("Enter x to reveal the card:");
+            input1 = Console.ReadLine();
+            x = int.Parse(input1);
+        }
+
+        Console.WriteLine("Enter y to reveal the card:");
+        var input2 = Console.ReadLine();
+        int y = int.Parse(input2);
+
+        while (y >= n)
+        {
+            Console.WriteLine("Enter y to reveal the card:");
+            input2 = Console.ReadLine();
+            y = int.Parse(input2);
+        }
+
+        return (x, y);
     }
 }
