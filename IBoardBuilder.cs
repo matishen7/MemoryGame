@@ -4,6 +4,7 @@ namespace MemoryGame
 {
     public interface IBoardBuilder
     {
-       public Board Build();
+        public IBoardBuilder WithDimensions(int m, int n);
+        public Board Build();
     }
 }
