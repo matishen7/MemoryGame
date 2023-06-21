@@ -68,8 +68,6 @@
                 }
                 Console.WriteLine();
             }
-
-            CheckIfCardsMatch(x, y, a, b);
         }
 
         public bool AllCardsFound()
@@ -80,7 +78,7 @@
             return true;
         }
 
-        private bool CheckIfCardsMatch(int x, int y, int a, int b)
+        public bool CheckIfCardsMatch(int x, int y, int a, int b)
         {
             if (cells[x][y].GetImage().Equals(cells[a][b].GetImage()))
             {
