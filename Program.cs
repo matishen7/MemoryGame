@@ -4,16 +4,16 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        
+
         string? restart = "Y";
         while (restart.Equals("Y"))
         {
             Console.Clear();
-            Console.WriteLine("Enter M(width):");
+            Console.WriteLine("Enter M(height):");
             string input1 = Console.ReadLine();
             int m = int.Parse(input1);
 
-            Console.WriteLine("Enter N(height):");
+            Console.WriteLine("Enter N(width):");
             string input2 = Console.ReadLine();
             int n = int.Parse(input2);
             var board = new ConsoleBoardBuilder()
@@ -33,32 +33,22 @@ public class Program
                 Console.Clear();
             }
             board.RevealAllCards();
-            Console.WriteLine("Do you want to restart the game? Y/N?");
+            Console.WriteLine("Congratulations! You won! Do you want to restart the game? Y/N?");
             restart = Console.ReadLine();
         }
     }
 
     private static (int x, int y) GetCardCoordinates(int m, int n)
     {
-        Console.WriteLine("Enter x to reveal the card:");
-        var input1 = Console.ReadLine();
-        int x = int.Parse(input1);
-        while (x >= m)
+        Console.WriteLine("Enter the X and Y values separated by a space:");
+        string input = Console.ReadLine();
+        string[] parts = input.Split(' ');
+        int x = 0, y = 0;
+        while (parts.Length != 2 || !int.TryParse(parts[0], out x) || !int.TryParse(parts[1], out y) || x >= m || y >= n)
         {
-            Console.WriteLine("Enter x to reveal the card:");
-            input1 = Console.ReadLine();
-            x = int.Parse(input1);
-        }
-
-        Console.WriteLine("Enter y to reveal the card:");
-        var input2 = Console.ReadLine();
-        int y = int.Parse(input2);
-
-        while (y >= n)
-        {
-            Console.WriteLine("Enter y to reveal the card:");
-            input2 = Console.ReadLine();
-            y = int.Parse(input2);
+            Console.WriteLine("Enter the X and Y values separated by a space:");
+            input = Console.ReadLine();
+            parts = input.Split(' ');
         }
 
         return (x, y);

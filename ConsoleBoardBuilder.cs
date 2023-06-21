@@ -1,7 +1,7 @@
 ﻿using MemoryGame;
 using System;
 
-internal class ConsoleBoardBuilder : IBoardBuilder
+public class ConsoleBoardBuilder : IBoardBuilder
 {
     private int m;
     private int n;
@@ -50,7 +50,7 @@ internal class ConsoleBoardBuilder : IBoardBuilder
         return consoleBoard;
     }
 
-    public T PickRandomImage<T>(List<T> list, List<int> assignedCount)
+    private T PickRandomImage<T>(List<T> list, List<int> assignedCount)
     {
         if (list == null || list.Count == 0)
         {
