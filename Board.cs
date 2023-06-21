@@ -1,6 +1,6 @@
 ﻿namespace MemoryGame
 {
-    public class Board
+    public class Board : IBoard
     {
         private int n, m;
         public Cell[][] cells;
