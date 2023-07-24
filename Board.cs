@@ -4,6 +4,7 @@
     {
         private int n, m;
         public Cell[][] cells;
+        public static int matchedCells = 0;
         public Board(int m, int n)
         {
             this.m = m;
@@ -70,12 +71,9 @@
             }
         }
 
-        public bool AllCardsFound()
+        public bool EndGame()
         {
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++)
-                    if (cells[i][j].IsFound() == false) return false;
-            return true;
+            return (matchedCells == m * n); 
         }
 
         public bool CheckIfCardsMatch(int x, int y, int a, int b)
@@ -84,6 +82,7 @@
             {
                 cells[x][y].SetAsFound();
                 cells[a][b].SetAsFound();
+                matchedCells += 2;
                 return true;
             }
             return false;
