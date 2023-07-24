@@ -23,17 +23,6 @@
             }
         }
 
-        public void Display()
-        {
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                    if (cells[i][j].IsFound()) Console.Write("* \t");
-                    else Console.Write(string.Format("? \t"));
-                Console.WriteLine();
-            }
-        }
-
         public void RevealAllCards()
         {
             for (int i = 0; i < m; i++)
