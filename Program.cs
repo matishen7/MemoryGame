@@ -20,14 +20,14 @@ public class Program
                 .WithDimensions(m, n)
                 .Build();
             //board.RevealAllCards();
-            while (!board.AllCardsFound())
+            while (!board.EndGame())
             {
                 board.Display();
                 var firstCard = GetCardCoordinates(m, n);
                 board.Display(firstCard.x, firstCard.y);
                 var secondCard = GetCardCoordinates(m, n);
                 Console.Clear();
-                board.Display(firstCard.x, firstCard.y, secondCard.x, secondCard.y);
+                board.Display(secondCard.x, secondCard.y);
                 board.CheckIfCardsMatch(firstCard.x, firstCard.y, secondCard.x, secondCard.y);
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
